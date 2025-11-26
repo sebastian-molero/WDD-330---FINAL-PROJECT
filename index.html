@@ -27,7 +27,115 @@
 </head>
 <body>
     <header class="header" id="header"></header>
-    <main>Hola</main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover, learn, and collect artworks in a museum-like experience.</h1>
+            <p>Explore curated collections, dive into detailed storied behind each piece, and build personal galleries to share with others.</p>
+            <button>
+                <a href="search/search.html" class="search">Discover now</a>
+            </button>
+        </div>
+        <div class="hero-image">
+            <picture>
+                <source srcset="images/hero-large.webp" type="image/webp" media="(min-width: 1024px)">
+                <source srcset="images/hero-medium.webp" type="image/webp" media="(min-width: 768px)">
+                <img src="images/hero-small.webp" alt="Hero image">
+            </picture>
+        </div>
+    </section>
+    <main>
+        <section class="featured">
+            <h2>Featured Works</h2>
+            <div class="featured-grid" id="featuredWorks"></div>
+        </section>
+
+        <section class="about">
+            <h2>Our Mission</h2>
+            <p>IUM Gallery connects art lovers with unique digital collections, accessible anytime and anywhere.</p>
+        </section>
+
+        <section class="journey">
+            <h2>How It Works</h2>
+            <div class="journey-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Browse</h3>
+                    <p>Explore thousands of artworks from different styles and cultures.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Favorite</h3>
+                    <p>Save your favorite pieces to revisit anytime.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Share</h3>
+                    <p>Show your discoveries with friends and fellow art lovers.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>Connect</h3>
+                    <p>Learn more about the artists and their creative journeys.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="collections">
+            <h2>Curated Collections</h2>
+            <p>Explore themed selections crafted by our curators.</p>
+            <div class="collections-grid">
+                <article class="collection-card">
+                    <img src="images/modern-art.webp" alt="modern art">
+                    <h3>Modern Art</h3>
+                </article>
+                <article class="collection-card">
+                    <img src="images/classical-art.webp" alt="classical art">
+                    <h3>Classical Art</h3>
+                </article>
+                <article class="collection-card">
+                    <img src="images/digital-art.webp" alt="digital art">
+                    <h3>Digital Art</h3>
+                </article>
+                <article class="collection-card">
+                    <img src="images/global-perspectives.webp" alt="global perspectives">
+                    <h3>Global Perspectives</h3>
+                </article>
+            </div>
+        </section>
+        
+        <section class="timeline">
+            <h2>Art Through Time</h2>
+            <p>Follow the journey of artistic expression across centuries.</p>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <span class="timeline-date">1500s</span>
+                    <h3>Renaissance</h3>
+                    <p>Masters like Michelangelo and Leonardo da Vinci redefined art with realism and perspective.</p>                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">1800s</span>
+                    <h3>Impressionism</h3>
+                    <p>Artists such as Monet captured fleeting moments with light and color.</p>                
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">1900s</span>
+                    <h3>Modernism</h3>
+                    <p>Picasso and Kandinsky broke boundaries with abstraction and bold experimentation.</p>
+                </div>                
+                <div class="timeline-item">
+                    <span class="timeline-date">2000s</span>
+                    <h3>Digital Era</h3>
+                    <p>Art expanded into virtual spaces, blending technology and creativity.</p>                
+                </div>
+            </div>
+        </section>
+        <section class="cta-banner">
+            <h2>Start Your Journey in Art Today</h2>
+            <button>
+                <a href="search/search.html" class="search">Explore the Collection</a>
+            </button>
+        </section>
+    </main>
     <footer class="footer" id="footer"></footer>
 </body>
 </html>
