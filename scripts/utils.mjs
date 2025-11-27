@@ -6,16 +6,30 @@ export async function loadHeaderFooter() {
 
 async function loadHeader() {
     const header = document.getElementById("header");
-    const response = await fetch("../partials/header.html");
-    const html = await response.text();
-    header.innerHTML = html;
+    const path = resolvePath("partials/header.html");
+    try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error("Failed to fetch header partial");
+        const html = await response.text();
+        header.innerHTML = html;
+    }
+    catch (error) {
+        console.error(error);
+    }
 }
 
 async function loadFooter() {
     const footer = document.getElementById("footer");
-    const response = await fetch("../partials/footer.html");
-    const html = await response.text();
-    footer.innerHTML = html;
+    const path = resolvePath("partials/footer.html");
+    try {
+        const response = await fetch(path);
+        if (!response.ok) throw new Error("Failed to fetch footer partial");
+        const html = await response.text();
+        footer.innerHTML = html;
+    }
+    catch (error) {
+        console.error(error);
+    }
 }
 
 function toggleNav() {
@@ -34,4 +48,19 @@ function toggleNav() {
         }
         
     })
+}
+
+function resolvePath(file) {
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const repoName = pathParts.length > 1 ? pathParts[0] : null;
+
+    const isIndex = window.location.pathname.endsWith("index.html");
+    const isRootRepo = repoName !== null && window.location.pathname === `/${repoName}/`;
+    const isRootLocal = window.location.pathname === "/";
+
+    if (isIndex || isRootRepo || isRootLocal) {
+        return file;
+    }
+
+    return "../" + file;
 }
