@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Meta tags here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IUM Gallery is a digital art gallery to explore artworks, artists, and styles.">    
+    <meta name="keywords" content="Art, Gallery, Paintings, Artists, Museum, Digital Collection, Harvard API, Artsy API">
+    <meta name="author" content="Sebastián Molero">
+
+    <!-- Title here -->
+    <title>IUM Gallery | Search</title>
+
+    <!-- Styles here -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- Scripts here -->
+    <script type="module" src="../scripts/search.js"></script>
+
+    <!-- Fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Favicon here -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header" id="header"></header>
+    <main>
+        <section class="search-bar">
+            <h2>Search the Collection</h2>
+            <form action="javascript:void(0)" onsubmit="return false" id="searchForm">
+                <input type="text" name="" id="query" placeholder="Search by title or artist">
+                <select id="classification">
+                    <option value="">All types</option>
+                    <option value="Paintings">Paintings</option>
+                    <option value="Sculpture">Sculpture</option>
+                    <option value="Photographs">Photographs</option>
+                </select>
+
+                <select id="orderBy">
+                    <option value="id">Default</option>
+                    <option value="rank">Relevance</option>
+                    <option value="accessionyear">Accession Year</option>
+                </select>
+
+                <select id="orderDirection">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="search-results">
+            <h2>Results</h2>
+            <div class="results-grid" id="resultsGrid"></div>
+            <div class="pagination" id="pagination"></div>
+        </section>
+    </main>
+    <footer class="footer" id="footer"></footer>
+</body>
+</html>
