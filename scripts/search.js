@@ -54,11 +54,11 @@ async function fetchResults() {
 
 function toCardHTML(record) {
     return `
-    <article class="result-card">
-      ${getImageHTML(record)}
+    <a href="../details/artwork_details.html?id=${record.id}" class="result-card">
+      <img src="${record.primaryimageurl || '../images/img_not_available.webp'}" alt="${record.title}">
       <h3>${record.title}</h3>
       <p>${record.people?.[0]?.name ?? "Unknown Artist"}</p>
-    </article>
+    </a>
   `;
 }
 
@@ -88,16 +88,3 @@ function renderPagination(totalPages) {
     pagination.appendChild(nextBtn);
   }
 }
-
-
-function getImageHTML(record) {
-    if (record.primaryimageurl) {
-      return `<img src="${record.primaryimageurl}" alt="${record.title}" onerror="handleImageError(this)">`;
-    } else {
-      return `<div class="no-image">No image available</div>`;
-    }
-  }
-  
-  function handleImageError(img) {
-    img.outerHTML = `<div class="no-image">No image available</div>`;
-  }
