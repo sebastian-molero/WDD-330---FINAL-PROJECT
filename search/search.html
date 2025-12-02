@@ -26,7 +26,25 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="header" id="header"></header>
+    <header class="header">
+        <div class="header-logo-container">
+            <img src="../images/IUM Gallery Logo White.webp" alt="IUM Logo">
+        </div>
+        <nav class="nav" id="nav">
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-list-item"><a href="#" class="nav-link">Search</a></li>
+                <li class="nav-list-item"><a href="../artists/artists.html" class="nav-link">Artists</a></li>
+                <li class="nav-list-item"><a href="../favorites/favorites.html" class="nav-link">Favorites</a></li>
+            </ul>
+        </nav>
+        
+        <button class="nav-toggle" id="nav-toggle">
+            <div class="nav-toggle-bar"></div>
+            <div class="nav-toggle-bar"></div>
+            <div class="nav-toggle-bar"></div>
+        </button>
+    </header>
     <main>
         <section class="search-bar">
             <h2>Search the Collection</h2>
@@ -60,6 +78,24 @@
             <div class="pagination" id="pagination"></div>
         </section>
     </main>
-    <footer class="footer" id="footer"></footer>
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>IUM Gallery</h3> 
+            <p>Explore artworks, artists, and styles from around the world.</p>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:ingo@iumgallery.com">info@iumgallery.com</a></p>
+            <p>Phone: +1 (512) 222-2222</p>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="footer-social-links">
+                <a href="#"><img src="../images/facebook-icon.svg" alt="Go to Facebook"></a>
+                <a href="#"><img src="../images/instagram-icon.svg" alt="Go to Instagram"></a>
+                <a href="#"><img src="../images/twitter-icon.svg" alt="Go to Twitter"></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
