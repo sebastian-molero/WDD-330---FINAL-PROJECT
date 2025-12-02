@@ -54,7 +54,7 @@ async function fetchResults() {
 
 function toCardHTML(record) {
     return `
-    <a href="../details/artwork_details.html?id=${record.id}" class="result-card">
+    <a href="../details/artwork_details.html?id=${record.id}" target="_blank" class="result-card">
       <img src="${record.primaryimageurl || '../images/img_not_available.webp'}" alt="${record.title}">
       <h3>${record.title}</h3>
       <p>${record.people?.[0]?.name ?? "Unknown Artist"}</p>

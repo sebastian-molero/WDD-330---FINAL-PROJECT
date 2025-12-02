@@ -669,3 +669,12 @@ main{
 .details-info strong{
     font-weight: 600;
 }
+
+@media (max-width: 580px) {
+    .artwork-detail-section{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+}
