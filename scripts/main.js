@@ -1,5 +1,24 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { toggleNav } from "./utils.mjs";
 import { fetchFeatured } from "./api.harvard.mjs";
+
+async function loadTemplate(path, parentElement) {
+    const response = await fetch(path);
+    const html = await response.text();
+    parentElement.innerHTML = html;
+}
+
+async function loadHeaderFooter() {
+    const headerPath = "partials/header.html";
+    const footerPath = "partials/footer.html";
+
+    const header = document.getElementById("header");
+    const footer = document.getElementById("footer");
+
+    await loadTemplate(headerPath, header);
+    await loadTemplate(footerPath, footer);
+
+    toggleNav();
+}
 
 loadHeaderFooter();
 
