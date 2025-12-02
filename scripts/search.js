@@ -1,6 +1,6 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { toggleNav } from "./utils.mjs";
 
-loadHeaderFooter();
+toggleNav();
 
 const API_BASE = "https://api.harvardartmuseums.org/object";
 const API_KEY = "e246cc08-eb1c-4847-9b96-e7ed8cdd50c6";
@@ -13,6 +13,10 @@ const searchForm = document.getElementById("searchForm");
 const grid = document.getElementById("resultsGrid");
 const pagination = document.getElementById("pagination");
 
+document.addEventListener("DOMContentLoaded", () => {
+  fetchResults();
+});
+  
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -23,37 +27,39 @@ searchForm.addEventListener("submit", async (e) => {
 });
 
 async function fetchResults() {
-    const orderBy = document.getElementById("orderBy").value;
-    const orderDirection = document.getElementById("orderDirection").value;
+  const orderBy = document.getElementById("orderBy").value;
+  const orderDirection = document.getElementById("orderDirection").value;
 
-    const params = new URLSearchParams({
-        apikey: API_KEY,
-        size: "20",
-        page: currentPage,
-        hasimage: "1",
-        keyword: lastQuery,
-        classification: lastClassification,
-        sort: orderBy,
-        sortorder: orderDirection,
-    });
+  const params = new URLSearchParams({
+    apikey: API_KEY,
+    size: "20",
+    page: currentPage,
+    hasimage: "1",
+    keyword: lastQuery,
+    classification: lastClassification,
+    sort: orderBy,
+    sortorder: orderDirection,
+  });
 
-    const url = `${API_BASE}?${params.toString()}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Failed to fetch results");
+  const url = `${API_BASE}?${params.toString()}`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Failed to fetch results");
 
-    const data = await response.json();
-    let records = Array.isArray(data.records) ? data.records : [];
+  const data = await response.json();
+  const records = Array.isArray(data.records) ? data.records : [];
 
-    if (records.length === 0) {
-        grid.innerHTML = "<p>No results found.</p>";
-        return;
-    }
-    grid.innerHTML = data.records.map(toCardHTML).join("");
-    renderPagination(data.info.pages);
+  if (records.length === 0) {
+    grid.innerHTML = "<p>No results found.</p>";
+    pagination.innerHTML = "";
+    return;
+  }
+
+  grid.innerHTML = records.map(toCardHTML).join("");
+  renderPagination(data.info.pages);
 }
 
 function toCardHTML(record) {
-    return `
+  return `
     <a href="../details/artwork_details.html?id=${record.id}" target="_blank" class="result-card">
       <img src="${record.primaryimageurl || '../images/img_not_available.webp'}" alt="${record.title}">
       <h3>${record.title}</h3>
@@ -64,7 +70,6 @@ function toCardHTML(record) {
 
 function renderPagination(totalPages) {
   pagination.innerHTML = "";
-
 
   if (currentPage > 1) {
     const prevBtn = document.createElement("button");

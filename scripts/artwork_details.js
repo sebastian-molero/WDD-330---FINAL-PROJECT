@@ -1,9 +1,9 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { toggleNav } from "./utils.mjs";
 
 const API_KEY = "e246cc08-eb1c-4847-9b96-e7ed8cdd50c6";
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadHeaderFooter();
+    toggleNav();
     displayArtworkDetails();
 });
 

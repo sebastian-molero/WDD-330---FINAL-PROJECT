@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Meta tags here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IUM Gallery is a digital art gallery to explore artworks, artists, and styles.">    
+    <meta name="keywords" content="Art, Gallery, Paintings, Artists, Museum, Digital Collection, Harvard API, Artsy API">
+    <meta name="author" content="Sebastián Molero">
+
+    <!-- Title here -->
+    <title>IUM Gallery | Artist Details</title>
+
+    <!-- Styles here -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- Scripts here -->
+    <script type="module" src="../scripts/artist_details.js"></script>
+
+    <!-- Fonts here -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Favicon here -->
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header class="header">
+        <div class="header-logo-container">
+            <img src="../images/IUM Gallery Logo White.webp" alt="IUM Logo">
+        </div>
+        <nav class="nav" id="nav">
+            <ul class="nav-list">
+                <li class="nav-list-item"><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="nav-list-item"><a href="../search/search.html" class="nav-link">Search</a></li>
+                <li class="nav-list-item"><a href="../artists/artists.html" class="nav-link">Artists</a></li>
+                <li class="nav-list-item"><a href="../favorites/favorites.html" class="nav-link">Favorites</a></li>
+            </ul>
+        </nav>
+        
+        <button class="nav-toggle" id="nav-toggle">
+            <div class="nav-toggle-bar"></div>
+            <div class="nav-toggle-bar"></div>
+            <div class="nav-toggle-bar"></div>
+        </button>
+    
+    </header>
+    <main>
+        <section class="artist-detail-section">
+            <div class="artist-image-container">
+                <img src="" alt="Artist Image" id="artistImage">
+            </div>
+            <div class="artist-details-container">
+                <h2 id="artistName">ArtistName</h2>
+                <div class="details-info">
+                    <p><strong>Culture: </strong><span id="artistCulture"></span></p>
+                    <p><strong>Dates: </strong><span id="artistDates"></span></p>
+                    <p><strong>Biography:</strong></p>
+                    <p id="artistBio"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="footer-info">
+            <h3>IUM Gallery</h3> 
+            <p>Explore artworks, artists, and styles from around the world.</p>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email: <a href="mailto:ingo@iumgallery.com">info@iumgallery.com</a></p>
+            <p>Phone: +1 (512) 222-2222</p>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="footer-social-links">
+                <a href="#"><img src="../images/facebook-icon.svg" alt="Go to Facebook"></a>
+                <a href="#"><img src="../images/instagram-icon.svg" alt="Go to Instagram"></a>
+                <a href="#"><img src="../images/twitter-icon.svg" alt="Go to Twitter"></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

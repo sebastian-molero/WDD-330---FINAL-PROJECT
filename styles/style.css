@@ -579,6 +579,7 @@ main{
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     overflow: hidden;
     transition: transform .3s ease;
+    text-align: left;
 }
 
 .result-card:hover{
@@ -608,7 +609,7 @@ main{
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .pagination button{
@@ -630,32 +631,32 @@ main{
 
 /* artwork details */
 
-.artwork-detail-section{
+.artwork-detail-section, .artist-detail-section{
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
 
-.artwork-image-container{
+.artwork-image-container, .artist-image-container{
     max-height: 600px;
     margin-bottom: 5rem;
 }
 
-.artwork-image-container img{
+.artwork-image-container img, .artist-image-container img{
     width: 100%;
     max-height: 100%;
     object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, .6));
 }
 
-.artwork-details-container{
+.artwork-details-container, .artist-details-container{
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.artwork-details-container h2{
+.artwork-details-container h2, .artist-details-container h2{
     font-size: var(--font-size-xlarge);
     color: var(--color-primary);
 }
@@ -671,10 +672,28 @@ main{
 }
 
 @media (max-width: 580px) {
-    .artwork-detail-section{
+    .artwork-detail-section, .artist-detail-section{
         grid-template-columns: 1fr;
         gap: 1rem;
         text-align: center;
     }
     
+}
+
+
+/* artists */
+
+.artists-grid{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    justify-content: start;
+}
+
+.artist-list-section > h2{
+    font-size: var(--font-size-xlarge);
+    color: var(--color-primary);
+    margin: 1rem 0;
+    text-align: center;
 }
