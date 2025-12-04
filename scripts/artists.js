@@ -1,4 +1,4 @@
-import { toggleNav } from "./utils.mjs";
+import { toggleNav, addFavorite } from "./utils.mjs";
 
 const API_BASE = "https://api.harvardartmuseums.org/person";
 const API_KEY = "e246cc08-eb1c-4847-9b96-e7ed8cdd50c6";
@@ -9,7 +9,7 @@ let currentQuery = "";
 
 document.addEventListener("DOMContentLoaded", () => {
     toggleNav();
-
+    
     const searchForm = document.getElementById("artistSearchForm");
     if (searchForm) {
         searchForm.addEventListener("submit", e => {
@@ -22,6 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     fetchArtists();
 });
+
+document.addEventListener("click", e => {
+    if (e.target.classList.contains("fav-btn")) {
+        const { type, id, title, image } = e.target.dataset;
+        addFavorite(type, id, title, image);
+
+        e.target.textContent = "Added to Favorites";
+        e.target.disabled = true;
+    }
+})
 
 async function fetchArtists() {
     const grid = document.getElementById("resultsGrid");
@@ -66,12 +76,21 @@ async function fetchArtists() {
             const imgUrl = await fetchArtistImage(name);
 
             return `
-                <a href="../details/artist_details.html?name=${encodeURIComponent(name)}" target="_blank" class="result-card">
-                    <img src="${imgUrl}" alt="${escapeHTML(name)}">
-                    <h3>${escapeHTML(name)}</h3>
-                    <p>${escapeHTML(culture)}</p>
-                    <p>${dates}</p>
-                </a>
+                <div class="result-card">
+                    <a href="../details/artist_details.html?name=${encodeURIComponent(name)}" target="_blank">
+                        <img src="${imgUrl}" alt="${escapeHTML(name) || "Artist potrait"}">
+                        <h3>${escapeHTML(name)}</h3>
+                        <p>${escapeHTML(culture)}</p>
+                        <p>${dates}</p>
+                    </a>
+                    <button class="fav-btn"
+                        data-type="artist"
+                        data-id="${escapeHTML(name)}" 
+                        data-title="${escapeHTML(name)}" 
+                        data-image="${imgUrl}">
+                        Add to Favorites
+                    </button>
+                </div>
             `;
         }));
 
@@ -79,7 +98,7 @@ async function fetchArtists() {
         renderPagination();
     } catch (error) {
         console.error(error);
-        grid.innerHTML = "<p>Failed to load artists.</p>";
+        grid.innerHTML = "<p>Sorry, we couldn't load artists. Please try again later.</p>";
         document.getElementById("pagination").innerHTML = "";
     }
 }

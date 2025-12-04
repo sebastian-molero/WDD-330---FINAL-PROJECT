@@ -309,26 +309,36 @@ main{
 }
 
 .featured-grid{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 1rem;
-    justify-content: center;
-    align-content: center;
 }
 
 .featured-card{
-    flex: 1 1 230px;
-    max-width: 350px;
     background-color: var(--color-white);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
     overflow: hidden;
+    transition: transform .3s ease;
+}
+
+.featured-card:hover{
+    transform: translateY(-5px);
 }
 
 .featured-card img{
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
+}
+
+.featured-card h3, .featured-card strong{
+    color: var(--color-primary);
+}
+
+.featured-card p{
+    color: var(--color-muted);
+    margin: .5rem 0;
 }
 
 .featured-card .meta{
@@ -566,6 +576,8 @@ main{
     padding: 2rem;
 }
 
+/*artwork results & artist results*/
+
 .results-grid{
     margin-top: 1.5rem;
     display: grid;
@@ -574,6 +586,9 @@ main{
 }
 
 .result-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: var(--color-white);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
@@ -588,7 +603,8 @@ main{
 
 .result-card img{
     width: 100%;
-    height: 200px;
+    min-height: 200px;
+    max-height: 250px;
     object-fit: cover;
 }
 
@@ -604,6 +620,22 @@ main{
     color: var(--color-muted);
     padding: 0 .8rem 1rem;
 }
+
+
+.fav-btn{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 1.2rem;
+    letter-spacing: .06rem;
+    font-weight: 600;
+    transition: background-color .3s ease;
+    width: 100%;
+}
+
+.result-card button:hover{
+    background-color: var(--color-accent);
+}
+
 
 .pagination{
     display: flex;
@@ -671,6 +703,23 @@ main{
     font-weight: 600;
 }
 
+.artist-detail-section button, .artwork-detail-section button{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    letter-spacing: .06rem;
+    font-weight: 600;
+    transition: background-color .3s ease;
+    grid-column: 2;
+    width: 250px;
+    margin: auto;
+}
+
+.artist-detail-section button:hover, .artwork-detail-section button:hover{
+    background-color: var(--color-accent);
+}
+
 @media (max-width: 580px) {
     .artwork-detail-section, .artist-detail-section{
         grid-template-columns: 1fr;
@@ -696,4 +745,79 @@ main{
     color: var(--color-primary);
     margin: 1rem 0;
     text-align: center;
+}
+
+/* favorites */
+
+.favorites-section{
+    padding: 2rem;
+}
+
+.favorites-grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.favorites-grid .favorite-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    overflow: hidden;
+    transition: transform .3s ease;
+    text-align: left;
+    flex: 0 1 230px;
+}
+
+.favorites-grid .favorite-card:hover{
+    transform: translateY(-5px);
+}
+
+.favorite-card .fav-image{
+    width: 100%;
+    max-height: 270px;
+    object-fit: cover;
+}
+
+.favorites-grid .favorite-card h3{
+    font-size: 1.1rem;
+    margin: .5rem 0;
+    padding: 0 .8rem;
+    color: var(--color-primary);
+}
+
+.favorites-grid .favorite-card p{
+    font-size: .9rem;
+    color: var(--color-muted);
+    padding: 0 .8rem 1rem;
+}
+
+.favorites-grid .remove-btn{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transition: background-color .3s ease, transform .3s ease;
+    padding: .6rem 1.2rem;
+    font-size: .95rem;
+    font-weight: 500;
+}
+
+.favorites-grid .remove-btn:hover{
+    background-color: var(--color-accent);
+}
+
+.clear{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    transition: background-color .3s ease;
+    padding: .6rem 1.2rem;
+    border-radius: 6px;
+    margin: 15px 0;
+    font-size: .95rem;
+}
+
+.clear:hover{
+    background-color: var(--color-accent);
 }

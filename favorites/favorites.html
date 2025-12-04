@@ -9,13 +9,13 @@
     <meta name="author" content="Sebastián Molero">
 
     <!-- Title here -->
-    <title>IUM Gallery | Artwork Details</title>
+    <title>IUM Gallery | Favorites</title>
 
     <!-- Styles here -->
     <link rel="stylesheet" href="../styles/style.css">
 
     <!-- Scripts here -->
-    <script type="module" src="../scripts/artwork_details.js"></script>
+    <script type="module" src="../scripts/favorites.js"></script>
 
     <!-- Fonts here -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +35,7 @@
                 <li class="nav-list-item"><a href="../index.html" class="nav-link">Home</a></li>
                 <li class="nav-list-item"><a href="../search/search.html" class="nav-link">Search</a></li>
                 <li class="nav-list-item"><a href="../artists/artists.html" class="nav-link">Artists</a></li>
-                <li class="nav-list-item"><a href="../favorites/favorites.html" class="nav-link">Favorites</a></li>
+                <li class="nav-list-item"><a href="favorites/favorites.html" class="nav-link">Favorites</a></li>
             </ul>
         </nav>
         
@@ -45,24 +45,15 @@
             <div class="nav-toggle-bar"></div>
         </button>
     </header>
+
     <main>
-        <section class="artwork-detail-section">
-            <div class="artwork-image-container">
-                <img id="artworkImage" src="" alt="Artwork Image">
-            </div>
-            <div class="artwork-details-container">
-                <h2 id="artworkTitle">Artwork Title</h2>
-                <div class="details-info">
-                    <p><strong>Artist:</strong> <span id="artworkArtist"></span></p>
-                    <p><strong>Year:</strong> <span id="artworkYear"></span></p>
-                    <p><strong>Classification:</strong> <span id="artworkClassification"></span></p>
-                    <p><strong>Description:</strong></p>
-                    <p id="detailsDescription"></p>
-                </div>
-                <button id="favArtworkBtn">Add to Favorites</button>
-            </div>
+        <section class="favorites-section">
+            <h2>Your Favorites</h2>
+            <button id="clearFavorites" class="clear">Clear All Favorites</button>
+            <div id="favoritesGrid" class="favorites-grid"></div>
         </section>
     </main>
+    
     <footer class="footer">
         <div class="footer-info">
             <h3>IUM Gallery</h3> 
@@ -82,5 +73,3 @@
             </div>
         </div>
     </footer>
-</body>
-</html>

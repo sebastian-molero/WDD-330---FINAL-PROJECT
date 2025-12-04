@@ -1,4 +1,4 @@
-import { toggleNav } from "./utils.mjs";
+import { toggleNav, addFavorite } from "./utils.mjs";
 
 toggleNav();
 
@@ -16,7 +16,7 @@ const pagination = document.getElementById("pagination");
 document.addEventListener("DOMContentLoaded", () => {
   fetchResults();
 });
-  
+
 searchForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -25,6 +25,17 @@ searchForm.addEventListener("submit", async (e) => {
   currentPage = 1;
   await fetchResults();
 });
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("fav-btn")) {
+    const { type, id, title, image } = e.target.dataset;
+    addFavorite(type, id, title, image);
+
+    e.target.textContent = "Added to Favorites";
+    e.target.disabled = true;
+  }
+});
+
 
 async function fetchResults() {
   const orderBy = document.getElementById("orderBy").value;
@@ -49,7 +60,7 @@ async function fetchResults() {
   const records = Array.isArray(data.records) ? data.records : [];
 
   if (records.length === 0) {
-    grid.innerHTML = "<p>No results found.</p>";
+    grid.innerHTML = "<p>Sorry, we couldn't load artworks. Please try again later.</p>";
     pagination.innerHTML = "";
     return;
   }
@@ -59,12 +70,24 @@ async function fetchResults() {
 }
 
 function toCardHTML(record) {
+  const title = record.title || "Untitled";
+  const artist = record.people?.[0]?.name ?? "Unknown Artist";
+  const image = record.primaryimageurl || "../images/img_not_available.webp";
   return `
-    <a href="../details/artwork_details.html?id=${record.id}" target="_blank" class="result-card">
-      <img src="${record.primaryimageurl || '../images/img_not_available.webp'}" alt="${record.title}">
-      <h3>${record.title}</h3>
-      <p>${record.people?.[0]?.name ?? "Unknown Artist"}</p>
-    </a>
+    <div class="result-card">
+      <a href="../details/artwork_details.html?id=${record.id}" target="_blank">
+        <img src="${image}" alt="${title || "Artwork image"}">
+        <h3>${title}</h3>
+        <p>${artist}</p>
+      </a>
+      <button class="fav-btn"
+        data-type="artwork"
+        data-id="${record.id}" 
+        data-title="${title}"
+        data-image="${image}">
+        Add to Favorites
+      </button>
+    </div>
   `;
 }
 

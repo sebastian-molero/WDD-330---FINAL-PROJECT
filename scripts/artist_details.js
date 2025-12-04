@@ -1,4 +1,4 @@
-import { toggleNav } from "./utils.mjs";
+import { toggleNav, addFavorite } from "./utils.mjs";
 
 const API_BASE = "https://api.harvardartmuseums.org/person";
 const API_KEY = "e246cc08-eb1c-4847-9b96-e7ed8cdd50c6";
@@ -17,6 +17,7 @@ async function showArtistDetails() {
     const cultureEl = document.getElementById("artistCulture");
     const datesEl = document.getElementById("artistDates");
     const bioEl = document.getElementById("artistBio");
+    const favBtn = document.getElementById("favArtistBtn");
 
     if (!name) {
         nameEl.textContent = "No artist selected.";
@@ -45,15 +46,23 @@ async function showArtistDetails() {
         const bio = wikiData.extract || "No biography available.";
 
         imgEl.src = imgUrl;
-        imgEl.alt = escapeHTML(name);
+        imgEl.alt = escapeHTML(name) || "Artist portrait"; 
         nameEl.textContent = escapeHTML(name);
         cultureEl.textContent = escapeHTML(culture);
         datesEl.textContent = escapeHTML(dates);
         bioEl.textContent = escapeHTML(bio);
 
+        if (favBtn) {
+            favBtn.addEventListener("click", () => {
+                const imgUrl = document.getElementById("artistImage").src;
+                addFavorite("artist", name, name, imgUrl);
+                favBtn.textContent = "Added to Favorites";
+                favBtn.disabled = true;
+            })
+        }
     } catch (error) {
         console.error(error);
-        nameEl.textContent = "Failed to load artist details.";
+        nameEl.textContent = "Sorry, we couldn't load artist details.";
     };
 }
 
