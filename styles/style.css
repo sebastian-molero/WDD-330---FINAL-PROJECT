@@ -621,6 +621,27 @@ main{
     padding: 0 .8rem 1rem;
 }
 
+.result-card, .favorite-card{
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp .6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.result-card img, .favorite-card .fav-image{
+    transition: transform .5s ease;
+}
+
+.result-card:hover img, .favorite-card:hover .fav-image{
+    transform: scale(1.05);
+}
 
 .fav-btn{
     background-color: var(--color-primary);
@@ -650,6 +671,19 @@ main{
     background-color: var(--color-primary);
     color: var(--color-white);
     transition: background-color .3s ease;
+    animation: pulse .8s infinite;
+}
+
+@keyframes pulse {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.07);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .pagination button:hover:not(:disabled){
@@ -673,6 +707,18 @@ main{
 .artwork-image-container, .artist-image-container{
     max-height: 600px;
     margin-bottom: 5rem;
+    animation: zoomIn .6s ease;
+}
+
+@keyframes zoomIn {
+    from{
+        opacity: 0;
+        transform: scale(.8);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .artwork-image-container img, .artist-image-container img{
