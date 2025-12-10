@@ -21,13 +21,17 @@ function renderFavorites() {
     }
 
     grid.innerHTML = favorites.map(fav => `
-            <div class="favorite-card">
+        <div class="favorite-card">
+            <a href="../details/${fav.type}_details.html?${fav.type === 'artist'
+                ? 'name=' + encodeURIComponent(fav.idOrName)
+                : 'id=' + fav.idOrName}">
                 <img src="${fav.image}" alt="${fav.title || "Favorite image"}" class="fav-image">
                 <h3>${fav.title}</h3>
                 <p>Type: ${fav.type}</p>
-                <button class="remove-btn" data-type="${fav.type}" data-id="${fav.idOrName}">Remove</button>
-            </div>
-        `).join("");
+            </a>
+            <button class="remove-btn" data-type="${fav.type}" data-id="${fav.idOrName}">Remove</button>
+        </div>
+    `).join("");
     
     grid.querySelectorAll(".remove-btn").forEach(btn => {
         btn.addEventListener("click", () => {
