@@ -482,7 +482,7 @@ main{
 .timeline-date{
     letter-spacing: .04rem;
     font-weight: bold;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: .5rem;
     position: relative;
 }
