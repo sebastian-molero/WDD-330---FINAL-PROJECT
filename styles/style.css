@@ -203,7 +203,7 @@ main{
 }
 
 .footer-social, .footer-contact, .footer-info{
-    flex-grow: 1 1 200px;
+    flex: 1 1 200px;
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -271,6 +271,7 @@ main{
 }
 
 .hero-image img{
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     display: block;
     height: 100%;
@@ -351,14 +352,14 @@ main{
     width: min(90%, 800px);
     margin: 0 auto;
     border-bottom: 2px solid var(--color-primary);
+}
 
-    h2{
-        margin-bottom: 1rem;
-    }
+.about h2{
+    margin-bottom: 1rem;
+}
 
-    p{
-        font-size: var(--font-size-base);
-    }
+.about p{
+    font-size: var(--font-size-base);
 }
 
 .journey{
