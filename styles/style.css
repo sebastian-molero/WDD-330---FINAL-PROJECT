@@ -135,6 +135,7 @@ h2, h3{
 
 .nav-toggle .nav-toggle-bar{
     background-color: var(--color-white);
+    display: block;
     height: 2px;
     width: 25px;
     margin: 5px 0;
